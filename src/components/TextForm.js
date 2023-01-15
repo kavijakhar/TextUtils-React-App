@@ -2,20 +2,20 @@ import React, { useState } from 'react'
 
 export default function TextForm(props) {
   const handleUpClick = () => {
-    if (!text=="") {
+ 
       
       let newText = text.toUpperCase();
       setText(newText)
       props.showAlert("converted to uppercase", "success")
-    }
+    
   }
   const handleLoClick = () => {
-    if(!text==""){
-      let newText = text.toLowerCase();
+   
+      let newText = text.toLowerCase();  
       setText(newText)
       props.showAlert("converted to lowercase", "success")
 
-    }
+    
   }
 
   const handleOnChange = (event) => {
@@ -52,15 +52,15 @@ export default function TextForm(props) {
             <textarea className="form-control" value={text} onChange={handleOnChange} style={{ backgroundColor: props.mode === 'dark' ? '#352a2a' : 'white', color: props.mode === 'dark' ? 'white' : 'black' }} id="exampleFormControlTextarea1" rows="9"></textarea>
           </div>
         </form>
-        <button className='btn btn-primary  my-1 ' onClick={handleUpClick}>Convert to Uppercase</button>
-        <button className='btn btn-primary  mx-3 my-1' onClick={handleLoClick}>Convert to Loercase</button>
-        <button disabled={text.length == ""} className="btn btn-primary mx-1 my-2" onClick={handleClearClick}>Clear Text</button>
-        <button disabled={text.length == ""} className="btn btn-primary mx-2 my-2" onClick={handleCopy}>Copy Text</button>
-        <button disabled={text.length == ""} className="btn btn-primary mx-2 my-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+        <button disabled={text.length === ""} className='btn btn-primary  my-1 ' onClick={handleUpClick}>Convert to Uppercase</button>
+        <button disabled={text.length === ""} className='btn btn-primary  mx-3 my-1' onClick={handleLoClick}>Convert to Loercase</button>
+        <button disabled={text.length === ""} className="btn btn-primary mx-1 my-2" onClick={handleClearClick}>Clear Text</button>
+        <button disabled={text.length === ""} className="btn btn-primary mx-2 my-2" onClick={handleCopy}>Copy Text</button>
+        <button disabled={text.length === ""} className="btn btn-primary mx-2 my-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
       </div>
       <div className="container my-2" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
         <h2>Your text summary</h2>
-        <p>{text.split(" ").filter((element) => { return element.length != 0 }).length} words and{text.length} characters</p>
+        <p>{text.split(" ").filter((element) => { return element.length !== 0 }).length} words and{text.length} characters</p>
         <p>{0.008 * text.split(/\s+/).length} minuts read</p>
         <h2>Periview</h2>
         <p>{text.length > 0 ? text : "Enter something in the textbox above to perview it here"}</p>
